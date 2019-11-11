@@ -13,12 +13,12 @@ import java.util.List;
 public interface AvroMapper<E, A> {
 
 
-    E toEntity(A avr);
+  //  E toEntity(A avr);
 
     A toAvro(E entity);
 
-    List <E> toEntityList(List<A> avrList);
+  //  List <E> toEntityList(List<A> avrList);
 
-    List <A> toAvroList(List<E> entityList);
+    //List <A> toAvroList(List<E> entityList);
 	
 }

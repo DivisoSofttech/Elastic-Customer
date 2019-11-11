@@ -26,6 +26,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.diviso.graeshoppe.avro.Contact;
 import com.diviso.graeshoppe.avro.Customer.Builder;
 
 import com.diviso.graeshoppe.client.SMS.SMSResourceApiIN;
@@ -150,10 +152,15 @@ public class CustomerServiceImpl implements CustomerService {
 		//com.diviso.graeshoppe.avro.Customer message =customerAvro.build();
 		com.diviso.graeshoppe.avro.Customer message =customerAvroMapper.toAvro(customer);
 		message .setStatus(status);
+		Contact c = new Contact();
+		c.setId(1L);
+		
+		message.setContact(c);
 		System.out.println("avro mapped#############################################"+message);
 		/*
 		 * com.diviso.graeshoppe.avro.Customer c; c.getPhoto().get
 		 */
+		
 		
 		return messageChannel.customerOut().send(MessageBuilder.withPayload(message).build());
 		

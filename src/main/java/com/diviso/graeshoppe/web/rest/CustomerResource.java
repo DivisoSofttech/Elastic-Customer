@@ -176,14 +176,16 @@ public class CustomerResource {
 	 * @param pageable the pagination information
 	 * @return the result of the search
 	 */
-	@GetMapping("/_search/customers")
-	public ResponseEntity<List<CustomerDTO>> searchCustomers(@RequestParam String query, Pageable pageable) {
-		log.debug("REST request to search for a page of Customers for query {}", query);
-		Page<CustomerDTO> page = customerService.search(query, pageable);
-		HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/customers");
-		return ResponseEntity.ok().headers(headers).body(page.getContent());
-	}
-
+	/*
+	 * @GetMapping("/_search/customers") public ResponseEntity<List<CustomerDTO>>
+	 * searchCustomers(@RequestParam String query, Pageable pageable) {
+	 * log.debug("REST request to search for a page of Customers for query {}",
+	 * query); Page<CustomerDTO> page = customerService.search(query, pageable);
+	 * HttpHeaders headers =
+	 * PaginationUtil.generateSearchPaginationHttpHeaders(query, page,
+	 * "/api/_search/customers"); return
+	 * ResponseEntity.ok().headers(headers).body(page.getContent()); }
+	 */
 	/**
 	 * GET /pdf/customerReport : get the pdf of all the products.
 	 * 

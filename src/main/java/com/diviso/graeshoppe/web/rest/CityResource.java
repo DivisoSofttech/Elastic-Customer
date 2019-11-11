@@ -128,12 +128,14 @@ public class CityResource {
      * @param pageable the pagination information
      * @return the result of the search
      */
-    @GetMapping("/_search/cities")
-    public ResponseEntity<List<CityDTO>> searchCities(@RequestParam String query, Pageable pageable) {
-        log.debug("REST request to search for a page of Cities for query {}", query);
-        Page<CityDTO> page = cityService.search(query, pageable);
-        HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/cities");
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
+	/*
+	 * @GetMapping("/_search/cities") public ResponseEntity<List<CityDTO>>
+	 * searchCities(@RequestParam String query, Pageable pageable) {
+	 * log.debug("REST request to search for a page of Cities for query {}", query);
+	 * Page<CityDTO> page = cityService.search(query, pageable); HttpHeaders headers
+	 * = PaginationUtil.generateSearchPaginationHttpHeaders(query, page,
+	 * "/api/_search/cities"); return
+	 * ResponseEntity.ok().headers(headers).body(page.getContent()); }
+	 */
 
 }

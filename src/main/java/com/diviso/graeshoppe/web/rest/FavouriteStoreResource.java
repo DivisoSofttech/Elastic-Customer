@@ -132,12 +132,16 @@ public class FavouriteStoreResource {
      * @param pageable the pagination information
      * @return the result of the search
      */
-    @GetMapping("/_search/favourite-stores")
-    public ResponseEntity<List<FavouriteStoreDTO>> searchFavouriteStores(@RequestParam String query, Pageable pageable) {
-        log.debug("REST request to search for a page of FavouriteStores for query {}", query);
-        Page<FavouriteStoreDTO> page = favouriteStoreService.search(query, pageable);
-        HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/favourite-stores");
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
+	/*
+	 * @GetMapping("/_search/favourite-stores") public
+	 * ResponseEntity<List<FavouriteStoreDTO>> searchFavouriteStores(@RequestParam
+	 * String query, Pageable pageable) {
+	 * log.debug("REST request to search for a page of FavouriteStores for query {}"
+	 * , query); Page<FavouriteStoreDTO> page = favouriteStoreService.search(query,
+	 * pageable); HttpHeaders headers =
+	 * PaginationUtil.generateSearchPaginationHttpHeaders(query, page,
+	 * "/api/_search/favourite-stores"); return
+	 * ResponseEntity.ok().headers(headers).body(page.getContent()); }
+	 */
 
 }

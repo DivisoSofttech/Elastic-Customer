@@ -128,12 +128,14 @@ public class NoteResource {
      * @param pageable the pagination information
      * @return the result of the search
      */
-    @GetMapping("/_search/notes")
-    public ResponseEntity<List<NoteDTO>> searchNotes(@RequestParam String query, Pageable pageable) {
-        log.debug("REST request to search for a page of Notes for query {}", query);
-        Page<NoteDTO> page = noteService.search(query, pageable);
-        HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/notes");
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
+	/*
+	 * @GetMapping("/_search/notes") public ResponseEntity<List<NoteDTO>>
+	 * searchNotes(@RequestParam String query, Pageable pageable) {
+	 * log.debug("REST request to search for a page of Notes for query {}", query);
+	 * Page<NoteDTO> page = noteService.search(query, pageable); HttpHeaders headers
+	 * = PaginationUtil.generateSearchPaginationHttpHeaders(query, page,
+	 * "/api/_search/notes"); return
+	 * ResponseEntity.ok().headers(headers).body(page.getContent()); }
+	 */
 
 }

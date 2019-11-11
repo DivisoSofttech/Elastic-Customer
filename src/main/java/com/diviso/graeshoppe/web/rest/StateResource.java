@@ -128,12 +128,14 @@ public class StateResource {
      * @param pageable the pagination information
      * @return the result of the search
      */
-    @GetMapping("/_search/states")
-    public ResponseEntity<List<StateDTO>> searchStates(@RequestParam String query, Pageable pageable) {
-        log.debug("REST request to search for a page of States for query {}", query);
-        Page<StateDTO> page = stateService.search(query, pageable);
-        HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/states");
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
+	/*
+	 * @GetMapping("/_search/states") public ResponseEntity<List<StateDTO>>
+	 * searchStates(@RequestParam String query, Pageable pageable) {
+	 * log.debug("REST request to search for a page of States for query {}", query);
+	 * Page<StateDTO> page = stateService.search(query, pageable); HttpHeaders
+	 * headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page,
+	 * "/api/_search/states"); return
+	 * ResponseEntity.ok().headers(headers).body(page.getContent()); }
+	 */
 
 }

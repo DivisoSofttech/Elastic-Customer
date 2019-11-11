@@ -128,12 +128,16 @@ public class UniqueCustomerIDResource {
      * @param pageable the pagination information
      * @return the result of the search
      */
-    @GetMapping("/_search/unique-customer-ids")
-    public ResponseEntity<List<UniqueCustomerIDDTO>> searchUniqueCustomerIDS(@RequestParam String query, Pageable pageable) {
-        log.debug("REST request to search for a page of UniqueCustomerIDS for query {}", query);
-        Page<UniqueCustomerIDDTO> page = uniqueCustomerIDService.search(query, pageable);
-        HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/unique-customer-ids");
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
+	/*
+	 * @GetMapping("/_search/unique-customer-ids") public
+	 * ResponseEntity<List<UniqueCustomerIDDTO>>
+	 * searchUniqueCustomerIDS(@RequestParam String query, Pageable pageable) { log.
+	 * debug("REST request to search for a page of UniqueCustomerIDS for query {}",
+	 * query); Page<UniqueCustomerIDDTO> page =
+	 * uniqueCustomerIDService.search(query, pageable); HttpHeaders headers =
+	 * PaginationUtil.generateSearchPaginationHttpHeaders(query, page,
+	 * "/api/_search/unique-customer-ids"); return
+	 * ResponseEntity.ok().headers(headers).body(page.getContent()); }
+	 */
 
 }

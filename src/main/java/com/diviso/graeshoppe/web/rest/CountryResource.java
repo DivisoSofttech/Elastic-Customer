@@ -128,12 +128,15 @@ public class CountryResource {
      * @param pageable the pagination information
      * @return the result of the search
      */
-    @GetMapping("/_search/countries")
-    public ResponseEntity<List<CountryDTO>> searchCountries(@RequestParam String query, Pageable pageable) {
-        log.debug("REST request to search for a page of Countries for query {}", query);
-        Page<CountryDTO> page = countryService.search(query, pageable);
-        HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/countries");
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
+	/*
+	 * @GetMapping("/_search/countries") public ResponseEntity<List<CountryDTO>>
+	 * searchCountries(@RequestParam String query, Pageable pageable) {
+	 * log.debug("REST request to search for a page of Countries for query {}",
+	 * query); Page<CountryDTO> page = countryService.search(query, pageable);
+	 * HttpHeaders headers =
+	 * PaginationUtil.generateSearchPaginationHttpHeaders(query, page,
+	 * "/api/_search/countries"); return
+	 * ResponseEntity.ok().headers(headers).body(page.getContent()); }
+	 */
 
 }

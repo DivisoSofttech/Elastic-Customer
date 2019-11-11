@@ -128,12 +128,15 @@ public class AddressResource {
      * @param pageable the pagination information
      * @return the result of the search
      */
-    @GetMapping("/_search/addresses")
-    public ResponseEntity<List<AddressDTO>> searchAddresses(@RequestParam String query, Pageable pageable) {
-        log.debug("REST request to search for a page of Addresses for query {}", query);
-        Page<AddressDTO> page = addressService.search(query, pageable);
-        HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/_search/addresses");
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
-    }
+	/*
+	 * @GetMapping("/_search/addresses") public ResponseEntity<List<AddressDTO>>
+	 * searchAddresses(@RequestParam String query, Pageable pageable) {
+	 * log.debug("REST request to search for a page of Addresses for query {}",
+	 * query); Page<AddressDTO> page = addressService.search(query, pageable);
+	 * HttpHeaders headers =
+	 * PaginationUtil.generateSearchPaginationHttpHeaders(query, page,
+	 * "/api/_search/addresses"); return
+	 * ResponseEntity.ok().headers(headers).body(page.getContent()); }
+	 */
 
 }

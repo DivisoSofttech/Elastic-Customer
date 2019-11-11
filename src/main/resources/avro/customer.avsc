@@ -52,24 +52,9 @@
 		"type":["null","string"],
 		"default": null},
 		
-		{"name":"contact",
-		"type":"com.diviso.graeshoppe.avro.Contact","default": null}
+		
 		
 		]
 		
 	}	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
 ]

@@ -11,7 +11,8 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {})
 public interface ContactAvroMapper extends EntityMapper<Contact, com.diviso.graeshoppe.avro.Contact> {
 
-
+	com.diviso.graeshoppe.avro.Contact toAvro(com.diviso.graeshoppe.domain.Contact contact);
+	
 
     default Contact fromId(Long id) {
         if (id == null) {

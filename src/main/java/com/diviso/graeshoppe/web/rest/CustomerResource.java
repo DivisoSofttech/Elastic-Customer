@@ -93,14 +93,7 @@ public class CustomerResource {
 						"nameexists");
 			}
 		}
-
-		CustomerDTO result1 = customerService.save(customerDTO);
-		if (result1.getId() == null) {
-			throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
-		}
-
-		CustomerDTO result = customerService.save(result1);
-
+		CustomerDTO result = customerService.save(customerDTO);
 		return ResponseEntity.created(new URI("/api/customers/" + result.getId()))
 				.headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString())).body(result);
 	}

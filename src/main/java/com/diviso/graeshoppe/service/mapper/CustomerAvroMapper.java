@@ -12,7 +12,7 @@ import org.mapstruct.*;
 @Mapper(componentModel = "spring", uses = {ContactAvroMapper.class})
 public interface CustomerAvroMapper extends AvroMapper<Customer, com.diviso.graeshoppe.avro.Customer> {
 
-   // @Mapping(source = "contact.id", target = "contact")
+    @Mapping(source = "contact.id", target = "contact")
     com.diviso.graeshoppe.avro.Customer toAvro(com.diviso.graeshoppe.domain.Customer customer);
 
 

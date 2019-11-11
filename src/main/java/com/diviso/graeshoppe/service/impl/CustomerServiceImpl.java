@@ -144,24 +144,11 @@ public class CustomerServiceImpl implements CustomerService {
 		
         log.debug("------------------------------------------publish method"+status);
 
-		/*
-		 * Builder customerAvro = com.diviso.graeshoppe.avro.Customer.newBuilder()
-		 * .setId(customer.getId()) .setName(customer.getName()) .setStatus(status);
-		 */
-	//	Builder customerAvro  = customerAvroMapper.modelToAvro(customer);
-		//com.diviso.graeshoppe.avro.Customer message =customerAvro.build();
 		com.diviso.graeshoppe.avro.Customer message =customerAvroMapper.toAvro(customer);
 		message .setStatus(status);
-		//Contact c = new Contact();
-		//c.setId(1L);
-		
-	//	message.setContact(c);
+
 		System.out.println("avro mapped#############################################"+message);
-		/*
-		 * com.diviso.graeshoppe.avro.Customer c; c.getPhoto().get
-		 */
-		
-		
+
 		return messageChannel.customerOut().send(MessageBuilder.withPayload(message).build());
 		
 

@@ -52,5 +52,5 @@ public interface StateService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    Page<StateDTO> search(String query, Pageable pageable);
+  //  Page<StateDTO> search(String query, Pageable pageable);
 }

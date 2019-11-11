@@ -3,7 +3,7 @@ package com.diviso.graeshoppe.service.impl;
 import com.diviso.graeshoppe.service.AddressService;
 import com.diviso.graeshoppe.domain.Address;
 import com.diviso.graeshoppe.repository.AddressRepository;
-import com.diviso.graeshoppe.repository.search.AddressSearchRepository;
+//import com.diviso.graeshoppe.repository.search.AddressSearchRepository;
 import com.diviso.graeshoppe.service.dto.AddressDTO;
 import com.diviso.graeshoppe.service.mapper.AddressMapper;
 import org.slf4j.Logger;
@@ -31,12 +31,12 @@ public class AddressServiceImpl implements AddressService {
 
     private final AddressMapper addressMapper;
 
-    private final AddressSearchRepository addressSearchRepository;
+   
 
-    public AddressServiceImpl(AddressRepository addressRepository, AddressMapper addressMapper, AddressSearchRepository addressSearchRepository) {
+	public AddressServiceImpl(AddressRepository addressRepository, AddressMapper addressMapper/* AddressSearchRepository addressSearchRepository*/) {
         this.addressRepository = addressRepository;
         this.addressMapper = addressMapper;
-        this.addressSearchRepository = addressSearchRepository;
+        //this.addressSearchRepository = addressSearchRepository;
     }
 
     /**
@@ -51,7 +51,7 @@ public class AddressServiceImpl implements AddressService {
         Address address = addressMapper.toEntity(addressDTO);
         address = addressRepository.save(address);
         AddressDTO result = addressMapper.toDto(address);
-        addressSearchRepository.save(address);
+       // addressSearchRepository.save(address);
         return result;
     }
 
@@ -93,7 +93,7 @@ public class AddressServiceImpl implements AddressService {
     public void delete(Long id) {
         log.debug("Request to delete Address : {}", id);
         addressRepository.deleteById(id);
-        addressSearchRepository.deleteById(id);
+      //  addressSearchRepository.deleteById(id);
     }
 
     /**
@@ -103,11 +103,13 @@ public class AddressServiceImpl implements AddressService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    @Override
-    @Transactional(readOnly = true)
-    public Page<AddressDTO> search(String query, Pageable pageable) {
-        log.debug("Request to search for a page of Addresses for query {}", query);
-        return addressSearchRepository.search(queryStringQuery(query), pageable)
-            .map(addressMapper::toDto);
-    }
+	/*
+	 * @Override
+	 * 
+	 * @Transactional(readOnly = true) public Page<AddressDTO> search(String query,
+	 * Pageable pageable) {
+	 * log.debug("Request to search for a page of Addresses for query {}", query);
+	 * return addressSearchRepository.search(queryStringQuery(query), pageable)
+	 * .map(addressMapper::toDto); }
+	 */
 }

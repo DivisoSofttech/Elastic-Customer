@@ -52,5 +52,5 @@ public interface UniqueCustomerIDService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    Page<UniqueCustomerIDDTO> search(String query, Pageable pageable);
+ //   Page<UniqueCustomerIDDTO> search(String query, Pageable pageable);
 }

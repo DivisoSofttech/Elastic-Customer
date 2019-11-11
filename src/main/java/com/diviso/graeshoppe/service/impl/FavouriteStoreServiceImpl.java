@@ -3,7 +3,7 @@ package com.diviso.graeshoppe.service.impl;
 import com.diviso.graeshoppe.service.FavouriteStoreService;
 import com.diviso.graeshoppe.domain.FavouriteStore;
 import com.diviso.graeshoppe.repository.FavouriteStoreRepository;
-import com.diviso.graeshoppe.repository.search.FavouriteStoreSearchRepository;
+//import com.diviso.graeshoppe.repository.search.FavouriteStoreSearchRepository;
 import com.diviso.graeshoppe.service.dto.FavouriteStoreDTO;
 import com.diviso.graeshoppe.service.mapper.FavouriteStoreMapper;
 import org.slf4j.Logger;
@@ -31,12 +31,16 @@ public class FavouriteStoreServiceImpl implements FavouriteStoreService {
 
     private final FavouriteStoreMapper favouriteStoreMapper;
 
-    private final FavouriteStoreSearchRepository favouriteStoreSearchRepository;
+  //  private final FavouriteStoreSearchRepository favouriteStoreSearchRepository;
 
-    public FavouriteStoreServiceImpl(FavouriteStoreRepository favouriteStoreRepository, FavouriteStoreMapper favouriteStoreMapper, FavouriteStoreSearchRepository favouriteStoreSearchRepository) {
+	public FavouriteStoreServiceImpl(FavouriteStoreRepository favouriteStoreRepository,
+			FavouriteStoreMapper favouriteStoreMapper/*
+														 * , FavouriteStoreSearchRepository
+														 * favouriteStoreSearchRepository
+														 */) {
         this.favouriteStoreRepository = favouriteStoreRepository;
         this.favouriteStoreMapper = favouriteStoreMapper;
-        this.favouriteStoreSearchRepository = favouriteStoreSearchRepository;
+    //    this.favouriteStoreSearchRepository = favouriteStoreSearchRepository;
     }
 
     /**
@@ -51,7 +55,7 @@ public class FavouriteStoreServiceImpl implements FavouriteStoreService {
         FavouriteStore favouriteStore = favouriteStoreMapper.toEntity(favouriteStoreDTO);
         favouriteStore = favouriteStoreRepository.save(favouriteStore);
         FavouriteStoreDTO result = favouriteStoreMapper.toDto(favouriteStore);
-        favouriteStoreSearchRepository.save(favouriteStore);
+    //    favouriteStoreSearchRepository.save(favouriteStore);
         return result;
     }
 
@@ -92,7 +96,7 @@ public class FavouriteStoreServiceImpl implements FavouriteStoreService {
     @Override
     public void delete(Long id) {
         log.debug("Request to delete FavouriteStore : {}", id);        favouriteStoreRepository.deleteById(id);
-        favouriteStoreSearchRepository.deleteById(id);
+   //     favouriteStoreSearchRepository.deleteById(id);
     }
 
     /**
@@ -102,11 +106,13 @@ public class FavouriteStoreServiceImpl implements FavouriteStoreService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    @Override
-    @Transactional(readOnly = true)
-    public Page<FavouriteStoreDTO> search(String query, Pageable pageable) {
-        log.debug("Request to search for a page of FavouriteStores for query {}", query);
-        return favouriteStoreSearchRepository.search(queryStringQuery(query), pageable)
-            .map(favouriteStoreMapper::toDto);
-    }
+	/*
+	 * @Override
+	 * 
+	 * @Transactional(readOnly = true) public Page<FavouriteStoreDTO> search(String
+	 * query, Pageable pageable) {
+	 * log.debug("Request to search for a page of FavouriteStores for query {}",
+	 * query); return favouriteStoreSearchRepository.search(queryStringQuery(query),
+	 * pageable) .map(favouriteStoreMapper::toDto); }
+	 */
 }

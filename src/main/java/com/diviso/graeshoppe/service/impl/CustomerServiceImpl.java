@@ -37,7 +37,7 @@ import com.diviso.graeshoppe.domain.OTPResponse;
 
 import com.diviso.graeshoppe.repository.ContactRepository;
 import com.diviso.graeshoppe.repository.CustomerRepository;
-import com.diviso.graeshoppe.repository.search.CustomerSearchRepository;
+//import com.diviso.graeshoppe.repository.search.CustomerSearchRepository;
 import com.diviso.graeshoppe.service.CustomerService;
 import com.diviso.graeshoppe.service.dto.CustomerDTO;
 import com.diviso.graeshoppe.service.mapper.CustomerMapper;
@@ -68,7 +68,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 	private final CustomerAvroMapper customerAvroMapper;
 	
-	private final CustomerSearchRepository customerSearchRepository;
+//	private final CustomerSearchRepository customerSearchRepository;
 	
 	
 	@Autowired
@@ -108,11 +108,11 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	public CustomerServiceImpl(CustomerRepository customerRepository, CustomerMapper customerMapper,
-			CustomerAvroMapper customerAvroMapper,CustomerSearchRepository customerSearchRepository) {
+			CustomerAvroMapper customerAvroMapper/* ,CustomerSearchRepository customerSearchRepository */) {
 		this.customerRepository = customerRepository;
 		this.customerMapper = customerMapper;
 		this.customerAvroMapper = customerAvroMapper;
-		this.customerSearchRepository = customerSearchRepository;
+		//this.customerSearchRepository = customerSearchRepository;
 	}
 
 	/**
@@ -128,7 +128,7 @@ public class CustomerServiceImpl implements CustomerService {
 		Customer customer = customerMapper.toEntity(customerDTO);
 		customer = customerRepository.save(customer);
 		CustomerDTO result = customerMapper.toDto(customer);
-		customerSearchRepository.save(customer);
+		//customerSearchRepository.save(customer);
 		String status="create";
         boolean publishstatus=createPublishMesssage(customer,status);
         
@@ -170,7 +170,7 @@ public class CustomerServiceImpl implements CustomerService {
 		Customer customer = customerMapper.toEntity(customerDTO);
 		customer = customerRepository.save(customer);
 		CustomerDTO result = customerMapper.toDto(customer);
-		customerSearchRepository.save(customer);
+		//customerSearchRepository.save(customer);
 		String status="update";
         boolean publishstatus=updatePublishMesssage(customer,status);
         log.debug("------------------------------------------published"+publishstatus);
@@ -227,7 +227,7 @@ public class CustomerServiceImpl implements CustomerService {
 		//Customer customer=customerRepository.findById(id).get();
 		customerRepository.deleteById(id);
 		
-		customerSearchRepository.deleteById(id);
+		//customerSearchRepository.deleteById(id);
 		
 		/*
 		 * if((customerRepository.existsById(id))==false) { String status="deleted";
@@ -260,12 +260,15 @@ public class CustomerServiceImpl implements CustomerService {
 	 * @param pageable the pagination information
 	 * @return the list of entities
 	 */
-	@Override
-	@Transactional(readOnly = true)
-	public Page<CustomerDTO> search(String query, Pageable pageable) {
-		log.debug("Request to search for a page of Customers for query {}", query);
-		return customerSearchRepository.search(queryStringQuery(query), pageable).map(customerMapper::toDto);
-	}
+	/*
+	 * @Override
+	 * 
+	 * @Transactional(readOnly = true) public Page<CustomerDTO> search(String query,
+	 * Pageable pageable) {
+	 * log.debug("Request to search for a page of Customers for query {}", query);
+	 * return customerSearchRepository.search(queryStringQuery(query),
+	 * pageable).map(customerMapper::toDto); }
+	 */
 
 	/**
 	 * Send sms notification to registered customer

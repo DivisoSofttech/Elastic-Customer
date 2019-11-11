@@ -52,5 +52,5 @@ public interface AddressService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    Page<AddressDTO> search(String query, Pageable pageable);
+   // Page<AddressDTO> search(String query, Pageable pageable);
 }

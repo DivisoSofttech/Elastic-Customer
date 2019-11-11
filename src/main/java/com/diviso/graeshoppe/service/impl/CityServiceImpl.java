@@ -3,7 +3,7 @@ package com.diviso.graeshoppe.service.impl;
 import com.diviso.graeshoppe.service.CityService;
 import com.diviso.graeshoppe.domain.City;
 import com.diviso.graeshoppe.repository.CityRepository;
-import com.diviso.graeshoppe.repository.search.CitySearchRepository;
+//import com.diviso.graeshoppe.repository.search.CitySearchRepository;
 import com.diviso.graeshoppe.service.dto.CityDTO;
 import com.diviso.graeshoppe.service.mapper.CityMapper;
 import org.slf4j.Logger;
@@ -31,12 +31,13 @@ public class CityServiceImpl implements CityService {
 
     private final CityMapper cityMapper;
 
-    private final CitySearchRepository citySearchRepository;
+    //private final CitySearchRepository citySearchRepository;
 
-    public CityServiceImpl(CityRepository cityRepository, CityMapper cityMapper, CitySearchRepository citySearchRepository) {
+	public CityServiceImpl(CityRepository cityRepository,
+			CityMapper cityMapper/* , CitySearchRepository citySearchRepository */) {
         this.cityRepository = cityRepository;
         this.cityMapper = cityMapper;
-        this.citySearchRepository = citySearchRepository;
+		/* this.citySearchRepository = citySearchRepository; */
     }
 
     /**
@@ -51,7 +52,7 @@ public class CityServiceImpl implements CityService {
         City city = cityMapper.toEntity(cityDTO);
         city = cityRepository.save(city);
         CityDTO result = cityMapper.toDto(city);
-        citySearchRepository.save(city);
+      //  citySearchRepository.save(city);
         return result;
     }
 
@@ -93,7 +94,7 @@ public class CityServiceImpl implements CityService {
     public void delete(Long id) {
         log.debug("Request to delete City : {}", id);
         cityRepository.deleteById(id);
-        citySearchRepository.deleteById(id);
+     //   citySearchRepository.deleteById(id);
     }
 
     /**
@@ -103,11 +104,13 @@ public class CityServiceImpl implements CityService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    @Override
-    @Transactional(readOnly = true)
-    public Page<CityDTO> search(String query, Pageable pageable) {
-        log.debug("Request to search for a page of Cities for query {}", query);
-        return citySearchRepository.search(queryStringQuery(query), pageable)
-            .map(cityMapper::toDto);
-    }
+	/*
+	 * @Override
+	 * 
+	 * @Transactional(readOnly = true) public Page<CityDTO> search(String query,
+	 * Pageable pageable) {
+	 * log.debug("Request to search for a page of Cities for query {}", query);
+	 * return citySearchRepository.search(queryStringQuery(query), pageable)
+	 * .map(cityMapper::toDto); }
+	 */
 }

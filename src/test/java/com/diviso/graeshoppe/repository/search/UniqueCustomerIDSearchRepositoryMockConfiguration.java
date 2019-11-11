@@ -10,7 +10,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class UniqueCustomerIDSearchRepositoryMockConfiguration {
 
-    @MockBean
-    private UniqueCustomerIDSearchRepository mockUniqueCustomerIDSearchRepository;
+	/*
+	 * @MockBean private UniqueCustomerIDSearchRepository
+	 * mockUniqueCustomerIDSearchRepository;
+	 */
 
 }

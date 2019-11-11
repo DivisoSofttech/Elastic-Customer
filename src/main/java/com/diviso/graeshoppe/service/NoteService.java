@@ -52,5 +52,5 @@ public interface NoteService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    Page<NoteDTO> search(String query, Pageable pageable);
+   // Page<NoteDTO> search(String query, Pageable pageable);
 }

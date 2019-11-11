@@ -3,7 +3,7 @@ package com.diviso.graeshoppe.service.impl;
 import com.diviso.graeshoppe.service.UniqueCustomerIDService;
 import com.diviso.graeshoppe.domain.UniqueCustomerID;
 import com.diviso.graeshoppe.repository.UniqueCustomerIDRepository;
-import com.diviso.graeshoppe.repository.search.UniqueCustomerIDSearchRepository;
+//import com.diviso.graeshoppe.repository.search.UniqueCustomerIDSearchRepository;
 import com.diviso.graeshoppe.service.dto.UniqueCustomerIDDTO;
 import com.diviso.graeshoppe.service.mapper.UniqueCustomerIDMapper;
 import org.slf4j.Logger;
@@ -31,12 +31,16 @@ public class UniqueCustomerIDServiceImpl implements UniqueCustomerIDService {
 
     private final UniqueCustomerIDMapper uniqueCustomerIDMapper;
 
-    private final UniqueCustomerIDSearchRepository uniqueCustomerIDSearchRepository;
+   // private final UniqueCustomerIDSearchRepository uniqueCustomerIDSearchRepository;
 
-    public UniqueCustomerIDServiceImpl(UniqueCustomerIDRepository uniqueCustomerIDRepository, UniqueCustomerIDMapper uniqueCustomerIDMapper, UniqueCustomerIDSearchRepository uniqueCustomerIDSearchRepository) {
+	public UniqueCustomerIDServiceImpl(UniqueCustomerIDRepository uniqueCustomerIDRepository,
+			UniqueCustomerIDMapper uniqueCustomerIDMapper/*
+															 * , UniqueCustomerIDSearchRepository
+															 * uniqueCustomerIDSearchRepository
+															 */) {
         this.uniqueCustomerIDRepository = uniqueCustomerIDRepository;
         this.uniqueCustomerIDMapper = uniqueCustomerIDMapper;
-        this.uniqueCustomerIDSearchRepository = uniqueCustomerIDSearchRepository;
+     //   this.uniqueCustomerIDSearchRepository = uniqueCustomerIDSearchRepository;
     }
 
     /**
@@ -51,7 +55,7 @@ public class UniqueCustomerIDServiceImpl implements UniqueCustomerIDService {
         UniqueCustomerID uniqueCustomerID = uniqueCustomerIDMapper.toEntity(uniqueCustomerIDDTO);
         uniqueCustomerID = uniqueCustomerIDRepository.save(uniqueCustomerID);
         UniqueCustomerIDDTO result = uniqueCustomerIDMapper.toDto(uniqueCustomerID);
-        uniqueCustomerIDSearchRepository.save(uniqueCustomerID);
+     //   uniqueCustomerIDSearchRepository.save(uniqueCustomerID);
         return result;
     }
 
@@ -92,7 +96,7 @@ public class UniqueCustomerIDServiceImpl implements UniqueCustomerIDService {
     @Override
     public void delete(Long id) {
         log.debug("Request to delete UniqueCustomerID : {}", id);        uniqueCustomerIDRepository.deleteById(id);
-        uniqueCustomerIDSearchRepository.deleteById(id);
+       // uniqueCustomerIDSearchRepository.deleteById(id);
     }
 
     /**
@@ -102,11 +106,14 @@ public class UniqueCustomerIDServiceImpl implements UniqueCustomerIDService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    @Override
-    @Transactional(readOnly = true)
-    public Page<UniqueCustomerIDDTO> search(String query, Pageable pageable) {
-        log.debug("Request to search for a page of UniqueCustomerIDS for query {}", query);
-        return uniqueCustomerIDSearchRepository.search(queryStringQuery(query), pageable)
-            .map(uniqueCustomerIDMapper::toDto);
-    }
+	/*
+	 * @Override
+	 * 
+	 * @Transactional(readOnly = true) public Page<UniqueCustomerIDDTO>
+	 * search(String query, Pageable pageable) {
+	 * log.debug("Request to search for a page of UniqueCustomerIDS for query {}",
+	 * query); return
+	 * uniqueCustomerIDSearchRepository.search(queryStringQuery(query), pageable)
+	 * .map(uniqueCustomerIDMapper::toDto); }
+	 */
 }

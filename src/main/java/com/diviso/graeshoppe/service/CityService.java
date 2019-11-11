@@ -52,5 +52,5 @@ public interface CityService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    Page<CityDTO> search(String query, Pageable pageable);
+  //  Page<CityDTO> search(String query, Pageable pageable);
 }

@@ -52,5 +52,5 @@ public interface FavouriteProductService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    Page<FavouriteProductDTO> search(String query, Pageable pageable);
+  //  Page<FavouriteProductDTO> search(String query, Pageable pageable);
 }

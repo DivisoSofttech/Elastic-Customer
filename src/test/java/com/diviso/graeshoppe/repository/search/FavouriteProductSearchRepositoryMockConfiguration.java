@@ -10,7 +10,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class FavouriteProductSearchRepositoryMockConfiguration {
 
-    @MockBean
-    private FavouriteProductSearchRepository mockFavouriteProductSearchRepository;
+	/*
+	 * @MockBean private FavouriteProductSearchRepository
+	 * mockFavouriteProductSearchRepository;
+	 */
 
 }

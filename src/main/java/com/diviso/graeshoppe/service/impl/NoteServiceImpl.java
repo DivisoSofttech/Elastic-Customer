@@ -3,7 +3,7 @@ package com.diviso.graeshoppe.service.impl;
 import com.diviso.graeshoppe.service.NoteService;
 import com.diviso.graeshoppe.domain.Note;
 import com.diviso.graeshoppe.repository.NoteRepository;
-import com.diviso.graeshoppe.repository.search.NoteSearchRepository;
+//import com.diviso.graeshoppe.repository.search.NoteSearchRepository;
 import com.diviso.graeshoppe.service.dto.NoteDTO;
 import com.diviso.graeshoppe.service.mapper.NoteMapper;
 import org.slf4j.Logger;
@@ -31,12 +31,13 @@ public class NoteServiceImpl implements NoteService {
 
     private final NoteMapper noteMapper;
 
-    private final NoteSearchRepository noteSearchRepository;
+  //  private final NoteSearchRepository noteSearchRepository;
 
-    public NoteServiceImpl(NoteRepository noteRepository, NoteMapper noteMapper, NoteSearchRepository noteSearchRepository) {
+	public NoteServiceImpl(NoteRepository noteRepository,
+			NoteMapper noteMapper/* , NoteSearchRepository noteSearchRepository */) {
         this.noteRepository = noteRepository;
         this.noteMapper = noteMapper;
-        this.noteSearchRepository = noteSearchRepository;
+    //    this.noteSearchRepository = noteSearchRepository;
     }
 
     /**
@@ -51,7 +52,7 @@ public class NoteServiceImpl implements NoteService {
         Note note = noteMapper.toEntity(noteDTO);
         note = noteRepository.save(note);
         NoteDTO result = noteMapper.toDto(note);
-        noteSearchRepository.save(note);
+     //   noteSearchRepository.save(note);
         return result;
     }
 
@@ -93,7 +94,7 @@ public class NoteServiceImpl implements NoteService {
     public void delete(Long id) {
         log.debug("Request to delete Note : {}", id);
         noteRepository.deleteById(id);
-        noteSearchRepository.deleteById(id);
+      //  noteSearchRepository.deleteById(id);
     }
 
     /**
@@ -103,11 +104,13 @@ public class NoteServiceImpl implements NoteService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    @Override
-    @Transactional(readOnly = true)
-    public Page<NoteDTO> search(String query, Pageable pageable) {
-        log.debug("Request to search for a page of Notes for query {}", query);
-        return noteSearchRepository.search(queryStringQuery(query), pageable)
-            .map(noteMapper::toDto);
-    }
+	/*
+	 * @Override
+	 * 
+	 * @Transactional(readOnly = true) public Page<NoteDTO> search(String query,
+	 * Pageable pageable) {
+	 * log.debug("Request to search for a page of Notes for query {}", query);
+	 * return noteSearchRepository.search(queryStringQuery(query), pageable)
+	 * .map(noteMapper::toDto); }
+	 */
 }

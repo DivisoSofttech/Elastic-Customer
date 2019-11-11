@@ -3,7 +3,7 @@ package com.diviso.graeshoppe.service.impl;
 import com.diviso.graeshoppe.service.ContactService;
 import com.diviso.graeshoppe.domain.Contact;
 import com.diviso.graeshoppe.repository.ContactRepository;
-import com.diviso.graeshoppe.repository.search.ContactSearchRepository;
+//import com.diviso.graeshoppe.repository.search.ContactSearchRepository;
 import com.diviso.graeshoppe.service.dto.ContactDTO;
 import com.diviso.graeshoppe.service.mapper.ContactMapper;
 import org.slf4j.Logger;
@@ -31,12 +31,14 @@ public class ContactServiceImpl implements ContactService {
 
     private final ContactMapper contactMapper;
 
-    private final ContactSearchRepository contactSearchRepository;
+  //  private final ContactSearchRepository contactSearchRepository;
 
-    public ContactServiceImpl(ContactRepository contactRepository, ContactMapper contactMapper, ContactSearchRepository contactSearchRepository) {
+	public ContactServiceImpl(ContactRepository contactRepository,
+			ContactMapper contactMapper/* , ContactSearchRepository contactSearchRepository */) {
         this.contactRepository = contactRepository;
         this.contactMapper = contactMapper;
-        this.contactSearchRepository = contactSearchRepository;
+        		
+       // this.contactSearchRepository = contactSearchRepository;
     }
 
     /**
@@ -51,7 +53,7 @@ public class ContactServiceImpl implements ContactService {
         Contact contact = contactMapper.toEntity(contactDTO);
         contact = contactRepository.save(contact);
         ContactDTO result = contactMapper.toDto(contact);
-        contactSearchRepository.save(contact);
+    //    contactSearchRepository.save(contact);
         return result;
     }
 
@@ -93,7 +95,7 @@ public class ContactServiceImpl implements ContactService {
     public void delete(Long id) {
         log.debug("Request to delete Contact : {}", id);
         contactRepository.deleteById(id);
-        contactSearchRepository.deleteById(id);
+      //  contactSearchRepository.deleteById(id);
     }
 
     /**
@@ -103,11 +105,13 @@ public class ContactServiceImpl implements ContactService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    @Override
-    @Transactional(readOnly = true)
-    public Page<ContactDTO> search(String query, Pageable pageable) {
-        log.debug("Request to search for a page of Contacts for query {}", query);
-        return contactSearchRepository.search(queryStringQuery(query), pageable)
-            .map(contactMapper::toDto);
-    }
+	/*
+	 * @Override
+	 * 
+	 * @Transactional(readOnly = true) public Page<ContactDTO> search(String query,
+	 * Pageable pageable) {
+	 * log.debug("Request to search for a page of Contacts for query {}", query);
+	 * return contactSearchRepository.search(queryStringQuery(query), pageable)
+	 * .map(contactMapper::toDto); }
+	 */
 }

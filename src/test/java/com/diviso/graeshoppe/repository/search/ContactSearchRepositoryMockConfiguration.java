@@ -10,7 +10,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ContactSearchRepositoryMockConfiguration {
 
-    @MockBean
-    private ContactSearchRepository mockContactSearchRepository;
+	/*
+	 * @MockBean private ContactSearchRepository mockContactSearchRepository;
+	 */
 
 }

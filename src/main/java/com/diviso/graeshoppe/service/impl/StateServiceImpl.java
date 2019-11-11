@@ -3,7 +3,7 @@ package com.diviso.graeshoppe.service.impl;
 import com.diviso.graeshoppe.service.StateService;
 import com.diviso.graeshoppe.domain.State;
 import com.diviso.graeshoppe.repository.StateRepository;
-import com.diviso.graeshoppe.repository.search.StateSearchRepository;
+//import com.diviso.graeshoppe.repository.search.StateSearchRepository;
 import com.diviso.graeshoppe.service.dto.StateDTO;
 import com.diviso.graeshoppe.service.mapper.StateMapper;
 import org.slf4j.Logger;
@@ -31,12 +31,13 @@ public class StateServiceImpl implements StateService {
 
     private final StateMapper stateMapper;
 
-    private final StateSearchRepository stateSearchRepository;
+   // private final StateSearchRepository stateSearchRepository;
 
-    public StateServiceImpl(StateRepository stateRepository, StateMapper stateMapper, StateSearchRepository stateSearchRepository) {
+	public StateServiceImpl(StateRepository stateRepository,
+			StateMapper stateMapper/* , StateSearchRepository stateSearchRepository */) {
         this.stateRepository = stateRepository;
         this.stateMapper = stateMapper;
-        this.stateSearchRepository = stateSearchRepository;
+     //   this.stateSearchRepository = stateSearchRepository;
     }
 
     /**
@@ -51,7 +52,7 @@ public class StateServiceImpl implements StateService {
         State state = stateMapper.toEntity(stateDTO);
         state = stateRepository.save(state);
         StateDTO result = stateMapper.toDto(state);
-        stateSearchRepository.save(state);
+        //stateSearchRepository.save(state);
         return result;
     }
 
@@ -93,7 +94,7 @@ public class StateServiceImpl implements StateService {
     public void delete(Long id) {
         log.debug("Request to delete State : {}", id);
         stateRepository.deleteById(id);
-        stateSearchRepository.deleteById(id);
+       // stateSearchRepository.deleteById(id);
     }
 
     /**
@@ -103,11 +104,13 @@ public class StateServiceImpl implements StateService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    @Override
-    @Transactional(readOnly = true)
-    public Page<StateDTO> search(String query, Pageable pageable) {
-        log.debug("Request to search for a page of States for query {}", query);
-        return stateSearchRepository.search(queryStringQuery(query), pageable)
-            .map(stateMapper::toDto);
-    }
+	/*
+	 * @Override
+	 * 
+	 * @Transactional(readOnly = true) public Page<StateDTO> search(String query,
+	 * Pageable pageable) {
+	 * log.debug("Request to search for a page of States for query {}", query);
+	 * return stateSearchRepository.search(queryStringQuery(query), pageable)
+	 * .map(stateMapper::toDto); }
+	 */
 }

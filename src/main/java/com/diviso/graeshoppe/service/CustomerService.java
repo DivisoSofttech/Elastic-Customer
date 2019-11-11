@@ -60,7 +60,7 @@ public interface CustomerService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    Page<CustomerDTO> search(String query, Pageable pageable);
+ //   Page<CustomerDTO> search(String query, Pageable pageable);
     
     /**
      * send sms to the customer

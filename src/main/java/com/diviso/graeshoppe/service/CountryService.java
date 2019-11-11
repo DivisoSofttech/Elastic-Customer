@@ -52,5 +52,5 @@ public interface CountryService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    Page<CountryDTO> search(String query, Pageable pageable);
+ //   Page<CountryDTO> search(String query, Pageable pageable);
 }

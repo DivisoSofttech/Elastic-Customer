@@ -52,5 +52,5 @@ public interface ContactService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    Page<ContactDTO> search(String query, Pageable pageable);
+   // Page<ContactDTO> search(String query, Pageable pageable);
 }

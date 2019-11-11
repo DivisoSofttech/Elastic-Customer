@@ -20,7 +20,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "customer")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "customer")
+//@Document(indexName = "customer")
 public class Customer implements Serializable {
 
     private static final long serialVersionUID = 1L;

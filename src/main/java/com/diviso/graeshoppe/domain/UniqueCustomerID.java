@@ -16,7 +16,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "unique_customer_id")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "uniquecustomerid")
+//@Document(indexName = "uniquecustomerid")
 public class UniqueCustomerID implements Serializable {
 
     private static final long serialVersionUID = 1L;

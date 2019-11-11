@@ -50,7 +50,7 @@
 
 		{"name":"status",
 		"type":["null","string"],
-		"default": null},
+		"default": null}
 		
 		
 		

@@ -51,6 +51,10 @@
 		{"name":"imageLink",
 		"type":["null","string"],
 		"default": null},
+		
+				{"name":"test",
+		"type":["null","string"],
+		"default": null},
 
 		{"name":"status",
 		"type":["null","string"],

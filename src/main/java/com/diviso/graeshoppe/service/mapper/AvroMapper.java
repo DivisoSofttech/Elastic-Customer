@@ -17,8 +17,8 @@ public interface AvroMapper<E, A> {
 
     A toAvro(E entity);
 
-    List <E> toEntity(List<A> avrList);
+    List <E> toEntityList(List<A> avrList);
 
-    List <A> toAvro(List<E> entityList);
+    List <A> toAvroList(List<E> entityList);
 	
 }

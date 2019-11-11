@@ -53,7 +53,7 @@
 		"default": null},
 		
 		{"name":"contact",
-		"type":"com.diviso.graeshoppe.avro.Contact"}
+		"type":"com.diviso.graeshoppe.avro.Contact","default": null}
 		
 		]
 		

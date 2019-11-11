@@ -9,7 +9,7 @@ import org.mapstruct.*;
  * Mapper for the entity Contact and its DTO ContactDTO.
  */
 @Mapper(componentModel = "spring", uses = {})
-public interface ContactAvroMapper extends EntityMapper<ContactDTO, Contact> {
+public interface ContactAvroMapper extends EntityMapper<Contact, com.diviso.graeshoppe.avro.Contact> {
 
 
 

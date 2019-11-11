@@ -41,7 +41,7 @@ import com.diviso.graeshoppe.repository.search.CustomerSearchRepository;
 import com.diviso.graeshoppe.service.CustomerService;
 import com.diviso.graeshoppe.service.dto.CustomerDTO;
 import com.diviso.graeshoppe.service.mapper.CustomerMapper;
-import com.diviso.graeshoppe.service.mapper.avro.CustomerAvroMapper;
+import com.diviso.graeshoppe.service.mapper.CustomerAvroMapper;
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
 import com.twilio.type.PhoneNumber;
@@ -138,7 +138,7 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	
 	@Override
-	public boolean createPublishMesssage(Customer customer, String status) {
+	public boolean createPublishMesssage(com.diviso.graeshoppe.domain.Customer customer, String status) {
 		
         log.debug("------------------------------------------publish method"+status);
 
@@ -148,7 +148,7 @@ public class CustomerServiceImpl implements CustomerService {
 		 */
 	//	Builder customerAvro  = customerAvroMapper.modelToAvro(customer);
 		//com.diviso.graeshoppe.avro.Customer message =customerAvro.build();
-		com.diviso.graeshoppe.avro.Customer message =customerAvroMapper.modelToAvro(customer);
+		com.diviso.graeshoppe.avro.Customer message =customerAvroMapper.toAvro(customer);
 		message .setStatus(status);
 		/*
 		 * com.diviso.graeshoppe.avro.Customer c; c.getPhoto().get

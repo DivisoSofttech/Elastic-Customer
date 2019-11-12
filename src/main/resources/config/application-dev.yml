@@ -56,7 +56,7 @@ spring:
                 output:
                     destination: topic-jhipster
                 customer:
-                    destination: customers
+                    destination: customer-topic
                     contentType: application/*+avro
                     producer:
                        useNativeEncoding: true

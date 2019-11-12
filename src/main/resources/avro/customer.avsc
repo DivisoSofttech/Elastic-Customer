@@ -48,11 +48,11 @@
 		"type":["null","string"],
 		"default": null},
 		
-		{"name":"imageLink",
-		"type":["null","string"],
-		"default": null},
+		{"name":"image",
+		"type":"bytes",
+		"default":"\u00FF"},
 		
-				{"name":"test",
+		{"name":"imageLink",
 		"type":["null","string"],
 		"default": null},
 

@@ -60,7 +60,7 @@
 		 "type":["null","com.diviso.graeshoppe.avro.Contact"], 
 		 "default": null},
 		
-		{"name":"image","type":"bytes","default":"\u00FF"}
+		{"name":"image","type":["null","bytes"],"default":"\u00FF"}
 		
 		
 		

@@ -27,8 +27,8 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.diviso.graeshoppe.avro.Contact;
-import com.diviso.graeshoppe.avro.Customer.Builder;
+import com.diviso.graeshoppe.avro.ContactInfo;
+import com.diviso.graeshoppe.avro.CustomerInfo.Builder;
 
 import com.diviso.graeshoppe.client.SMS.SMSResourceApiIN;
 import com.diviso.graeshoppe.client.SMS.SMSResourceApiUK;
@@ -144,7 +144,7 @@ public class CustomerServiceImpl implements CustomerService {
 		
         log.debug("------------------------------------------publish method"+status);
 
-		com.diviso.graeshoppe.avro.Customer message =customerAvroMapper.toAvro(customer);
+		com.diviso.graeshoppe.avro.CustomerInfo message =customerAvroMapper.toAvro(customer);
 		message .setStatus(status);
 
 		System.out.println("avro mapped#############################################"+message);
@@ -178,11 +178,11 @@ public class CustomerServiceImpl implements CustomerService {
 	public boolean updatePublishMesssage(Customer customer, String status) {
         log.debug("------------------------------------------updatepublish method");
 
-		Builder customerAvro = com.diviso.graeshoppe.avro.Customer.newBuilder()
+		Builder customerAvro = com.diviso.graeshoppe.avro.CustomerInfo .newBuilder()
 				.setId(customer.getId())
 				.setName(customer.getName())
 				.setStatus(status);
-		com.diviso.graeshoppe.avro.Customer message =customerAvro.build();
+		com.diviso.graeshoppe.avro.CustomerInfo  message =customerAvro.build();
 		return messageChannel.customerOut().send(MessageBuilder.withPayload(message).build());
 	}
 
@@ -237,10 +237,10 @@ public class CustomerServiceImpl implements CustomerService {
 	public boolean deleteMesssage(Customer customer, String status) {
         log.debug("------------------------------------------updatepublish method");
 
-		Builder customerAvro = com.diviso.graeshoppe.avro.Customer.newBuilder()
+		Builder customerAvro = com.diviso.graeshoppe.avro.CustomerInfo .newBuilder()
 
 				.setStatus(status);
-		com.diviso.graeshoppe.avro.Customer message =customerAvro.build();
+		com.diviso.graeshoppe.avro.CustomerInfo  message =customerAvro.build();
 		return messageChannel.customerOut().send(MessageBuilder.withPayload(message).build());
 	}
 	

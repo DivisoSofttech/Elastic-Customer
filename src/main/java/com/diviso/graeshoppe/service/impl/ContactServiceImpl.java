@@ -81,7 +81,7 @@ public class ContactServiceImpl implements ContactService {
 		
         log.debug("------------------------------------------publish method"+status);
 
-		com.diviso.graeshoppe.avro.Contact message =contactAvroMapper.toAvro(contact);
+		com.diviso.graeshoppe.avro.ContactInfo message =contactAvroMapper.toAvro(contact);
 		message .setStatus(status);
 
 		System.out.println("avro mapped#############################################"+message);
